@@ -17,11 +17,11 @@ public class SearchEngine {
 
 	public static void main(String[] args) throws IOException, ParseException{
 		// TODO Auto-generated method stub
-		String docs_path = "C:/docs/cran";
-		String index_path_directories = "./docs/index";
-		String queries_path_directory = "./docs/queries";
+		String docs_path = "./Docs/crandocs";
+		String index_path_directories = "./Docs/index";
+		String queries_path_directory = "./Docs/queries";
 		String docs_location = "C:/Users/bhard/eclipse-workspace/a1/src/main/resources/cran.all.1400";
-		String results_path = "./docs/results";
+		String results_path = "C:\\Trinity Assignment\\Information Retrival\\crafield_assignment\\trec_eval-9.0.7\\results";
 		
 		Parser par = new Parser(docs_path,queries_path_directory);
 		Indexer indx = new Indexer();

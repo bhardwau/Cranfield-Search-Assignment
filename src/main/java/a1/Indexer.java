@@ -1,9 +1,11 @@
 package a1;
 
-
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import a1.myAnalyzer;
 import a1.docs.Cranfield;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.CharArraySet;
@@ -33,11 +35,13 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
+import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
 
 public class Indexer {
 	
 	
-	private static String INDEX_DIRECTORY = "C:/docs/index";
+	private static String INDEX_DIRECTORY = "./docs/index";
 	private static String stop_words = "C:/docs/stopwords/stopwords.txt";
 	private IndexWriter indexw;
 	private static CharArraySet stopWordSet = new CharArraySet(1000, true);
@@ -45,7 +49,7 @@ public class Indexer {
 
     public void open() throws IOException {
         
-         
+    
     	 InputStream is = new FileInputStream(stop_words);
     	 InputStreamReader inputStreamReader = new InputStreamReader(is);
          BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
@@ -55,8 +59,8 @@ public class Indexer {
          }
          bufferedReader.close();
          
-         
-    	Analyzer analyzer = new EnglishAnalyzer(stopWordSet);
+   
+         Analyzer analyzer = new myAnalyzer(stopWordSet);
 
     	Directory directory = FSDirectory.open(Paths.get(INDEX_DIRECTORY));
         Similarity similarity[] = {
@@ -85,8 +89,10 @@ public class Indexer {
         String fields[] = {"Title", "Query"};
         String queryString = QueryParser.escape(cranQuery);
         
-
-        Analyzer analyzer = new EnglishAnalyzer(stopWordSet);
+   
+        Analyzer analyzer = new myAnalyzer(stopWordSet);
+        
+//        Analyzer analyzer = new EnglishAnalyzer(stopWordSet);
         QueryParser queryParser = new MultiFieldQueryParser(fields, analyzer);
         Query query = queryParser.parse(queryString);
         TopDocs topDocs = indexSearcher.search(query, 1000);
@@ -109,11 +115,12 @@ public class Indexer {
         Document doc = new Document();
         
         doc.add(new StringField("ID", crans.getIdx(), Field.Store.YES));
-        TextField titleField = new TextField("Title", crans.getTitle(), Field.Store.YES);
+        TextField titleField = new TextField("Title", crans.getTitle(), Field.Store.NO);
+        
         doc.add(titleField);
-        doc.add(new TextField("Authors", crans.getAuthors(), Field.Store.YES));
-        doc.add(new TextField("Biblographical references", crans.getbiblo(), Field.Store.YES));
-        doc.add(new TextField("Description", crans.getDescription(), Field.Store.YES));
+        doc.add(new TextField("Authors", crans.getAuthors(), Field.Store.NO));
+        doc.add(new TextField("Biblographical references", crans.getbiblo(), Field.Store.NO));
+        doc.add(new TextField("Description", crans.getDescription(), Field.Store.NO));
         indexw.addDocument(doc);
         
        

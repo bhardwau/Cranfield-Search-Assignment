@@ -104,7 +104,7 @@ public class Parser {
         String queries = br.readLine();
         int count = 1;
         while (queries != null) {
-            FileWriter fw = new FileWriter(pathQuery + File.separator + "cran.qry." + count);
+            FileWriter fw = new FileWriter(pathQuery + File.separator + "cran.qry." + count +".txt");
             fw.append(queries).append("\n");
             queries = br.readLine();
             while (queries != null && !queries.startsWith(".I")) {
@@ -118,7 +118,7 @@ public class Parser {
     }
     
     public queryDocs queryMaker(int idx) throws IOException{
-    	FileReader fr = new FileReader(new File(pathQuery + File.separator + "cran.qry." + idx));
+    	FileReader fr = new FileReader(new File(pathQuery + File.separator + "cran.qry." + idx +".txt"));
     	BufferedReader br = new BufferedReader(fr );
     	String queries = br.readLine();
     	StringBuilder desc = new StringBuilder();
