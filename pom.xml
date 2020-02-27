@@ -70,7 +70,7 @@
                         </descriptorRefs>
                         <archive>
                             <manifest>
-                                <mainClass>SearchEngine</mainClass>
+                                <mainClass>a1.SearchEngine</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
@@ -93,7 +93,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.mkyong.hashing.CranSearcher</mainClass>
+                            <mainClass>a1.SearchEngine</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

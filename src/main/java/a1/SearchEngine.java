@@ -1,3 +1,4 @@
+package a1;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,9 +9,6 @@ import org.apache.lucene.queryparser.classic.ParseException;
 
 import a1.docs.Cranfield;
 import a1.docs.queryDocs;
-import a1.Parser;
-import a1.UIComponents;
-import a1.Indexer;
 
 
 public class SearchEngine {
