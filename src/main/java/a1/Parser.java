@@ -22,7 +22,7 @@ public class Parser {
 	}
 	
 	public void documents() throws IOException{
-		InputStream is = new FileInputStream("C:\\Users\\bhard\\eclipse-workspace\\a1\\src\\main\\resources\\cran.all.1400");
+		InputStream is = new FileInputStream("C:\\Users\\bhard\\git\\CranfieldSearch\\a1\\src\\main\\resources\\cran.all.1400");
 		InputStreamReader isr = new InputStreamReader(is);
 	
 		BufferedReader br = new BufferedReader(isr);
@@ -97,7 +97,7 @@ public class Parser {
 	
     
     public void createQueries() throws IOException {
-    	InputStream is = new FileInputStream("C:\\Users\\bhard\\eclipse-workspace\\a1\\src\\main\\resources\\cran.qry");
+    	InputStream is = new FileInputStream("C:\\Users\\bhard\\git\\CranfieldSearch\\a1\\src\\main\\resources\\cran.qry");
     	InputStreamReader isr = new InputStreamReader(is);
        
         BufferedReader br = new BufferedReader(isr);

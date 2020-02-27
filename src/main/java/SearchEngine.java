@@ -1,4 +1,3 @@
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,10 +18,10 @@ public class SearchEngine {
 	public static void main(String[] args) throws IOException, ParseException{
 		// TODO Auto-generated method stub
 		String docs_path = "C:/docs/cran";
-		String index_path_directories = "C:/docs/index";
-		String queries_path_directory = "C:/docs/queries";
+		String index_path_directories = "./docs/index";
+		String queries_path_directory = "./docs/queries";
 		String docs_location = "C:/Users/bhard/eclipse-workspace/a1/src/main/resources/cran.all.1400";
-		String results_path = "C:/docs/results";
+		String results_path = "./docs/results";
 		
 		Parser par = new Parser(docs_path,queries_path_directory);
 		Indexer indx = new Indexer();
