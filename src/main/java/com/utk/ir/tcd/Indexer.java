@@ -33,7 +33,6 @@ import org.apache.lucene.search.similarities.Similarity;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
-import com.utk.ir.tcd.myAnalyzer;
 
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
