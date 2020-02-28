@@ -70,7 +70,7 @@
                         </descriptorRefs>
                         <archive>
                             <manifest>
-                                <mainClass>a1.SearchEngine</mainClass>
+                                <mainClass>com.utk.ir.tcd.SearchEngine</mainClass>
                             </manifest>
                         </archive>
                     </configuration>
@@ -93,7 +93,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>a1.SearchEngine</mainClass>
+                            <mainClass>com.utk.ir.tcd.SearchEngine</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

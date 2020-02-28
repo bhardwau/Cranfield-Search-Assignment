@@ -1,12 +1,11 @@
-package a1;
+package com.utk.ir.tcd;
 
 import java.io.*;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import a1.myAnalyzer;
-import a1.docs.Cranfield;
+
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.CharArraySet;
 import org.apache.lucene.document.Document;
@@ -33,6 +32,9 @@ import org.apache.lucene.search.similarities.Similarity;
 
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+
+import com.utk.ir.tcd.myAnalyzer;
+
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.analysis.en.EnglishAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
@@ -60,7 +62,7 @@ public class Indexer {
          bufferedReader.close();
          
    
-         Analyzer analyzer = new myAnalyzer(stopWordSet);
+         EnglishAnalyzer analyzer = new EnglishAnalyzer(stopWordSet);
 
     	Directory directory = FSDirectory.open(Paths.get(INDEX_DIRECTORY));
         Similarity similarity[] = {
@@ -86,11 +88,19 @@ public class Indexer {
         
         
         indexSearcher.setSimilarity(new MultiSimilarity(similarity));
-        String fields[] = {"Title", "Query"};
+        String fields[] = {"Title", "Description"};
         String queryString = QueryParser.escape(cranQuery);
         
    
-        Analyzer analyzer = new myAnalyzer(stopWordSet);
+        InputStream is = new FileInputStream(stop_words);
+   	 	InputStreamReader inputStreamReader = new InputStreamReader(is);
+        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+        
+        while (bufferedReader.ready()) {
+            stopWordSet.add(bufferedReader.readLine());
+        }
+        bufferedReader.close();
+        EnglishAnalyzer analyzer = new EnglishAnalyzer(stopWordSet);
         
 //        Analyzer analyzer = new EnglishAnalyzer(stopWordSet);
         QueryParser queryParser = new MultiFieldQueryParser(fields, analyzer);
@@ -120,7 +130,7 @@ public class Indexer {
         doc.add(titleField);
         doc.add(new TextField("Authors", crans.getAuthors(), Field.Store.NO));
         doc.add(new TextField("Biblographical references", crans.getbiblo(), Field.Store.NO));
-        doc.add(new TextField("Description", crans.getDescription(), Field.Store.NO));
+        doc.add(new TextField("Description", crans.getDescription(), Field.Store.YES));
         indexw.addDocument(doc);
         
        

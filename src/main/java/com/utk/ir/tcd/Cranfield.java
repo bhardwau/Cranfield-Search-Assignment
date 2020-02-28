@@ -1,4 +1,4 @@
-package a1.docs;
+package com.utk.ir.tcd;
 
 public class Cranfield {
 	private String idx;

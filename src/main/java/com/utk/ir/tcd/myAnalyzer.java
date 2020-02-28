@@ -1,4 +1,4 @@
-package a1;
+package com.utk.ir.tcd;
 import java.io.Reader;
 
 import org.apache.lucene.analysis.CharArraySet;

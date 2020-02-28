@@ -1,6 +1,5 @@
-package a1;
-import a1.docs.Cranfield;
-import a1.docs.queryDocs;
+package com.utk.ir.tcd;
+import com.utk.ir.tcd.SearchEngine;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,7 +21,8 @@ public class Parser {
 	}
 	
 	public void documents() throws IOException{
-		InputStream is = new FileInputStream("C:\\Users\\bhard\\git\\CranfieldSearch\\a1\\src\\main\\resources\\cran.all.1400");
+		ClassLoader classloader = new SearchEngine().getClass().getClassLoader();
+		InputStream is = new FileInputStream(classloader.getResource("cran.all.1400").getFile());
 		InputStreamReader isr = new InputStreamReader(is);
 	
 		BufferedReader br = new BufferedReader(isr);
@@ -97,7 +97,8 @@ public class Parser {
 	
     
     public void createQueries() throws IOException {
-    	InputStream is = new FileInputStream("C:\\Users\\bhard\\git\\CranfieldSearch\\a1\\src\\main\\resources\\cran.qry");
+    	ClassLoader classloader = new SearchEngine().getClass().getClassLoader();
+		InputStream is = new FileInputStream(classloader.getResource("cran.qry").getFile());
     	InputStreamReader isr = new InputStreamReader(is);
        
         BufferedReader br = new BufferedReader(isr);

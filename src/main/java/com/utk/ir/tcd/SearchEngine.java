@@ -1,4 +1,4 @@
-package a1;
+package com.utk.ir.tcd;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,19 +7,14 @@ import java.util.Objects;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 
-import a1.docs.Cranfield;
-import a1.docs.queryDocs;
-
 
 public class SearchEngine {
 
 	public static void main(String[] args) throws IOException, ParseException{
 		// TODO Auto-generated method stub
 		String docs_path = "./Docs/crandocs";
-		String index_path_directories = "./Docs/index";
 		String queries_path_directory = "./Docs/queries";
-		String docs_location = "C:/Users/bhard/eclipse-workspace/a1/src/main/resources/cran.all.1400";
-		String results_path = "C:\\Trinity Assignment\\Information Retrival\\crafield_assignment\\trec_eval-9.0.7\\results";
+		String results_path = "./Docs/results";
 		
 		Parser par = new Parser(docs_path,queries_path_directory);
 		Indexer indx = new Indexer();
